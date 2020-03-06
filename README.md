@@ -1,4 +1,6 @@
 # HealthApp
-SENG thingy
 
-Clone repo and open index.html to launch
+Usage:
+[1] Clone repository
+[2] Locate index.html
+[3] Open index.html
