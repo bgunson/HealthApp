@@ -124,6 +124,10 @@ body{
 	display: block;
 	text-decoration: none;
 }
+
+.side-nav ul li a:hover {
+  color: #fff;
+}
 .side-nav ul li i {
 	color: #0497df;
 	min-width: 20px;
