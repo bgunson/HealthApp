@@ -22,7 +22,7 @@ body{
   -webkit-border-radius: 10px 10px 10px 10px;
   border: 0px solid #000000;
 }
-##################################################################
+
 .header {
 	position: absolute;
 	width: 100%;
@@ -87,7 +87,7 @@ body{
 .nav-trigger span:after {
 	top: 6px;
 }
-/* side navigation styles */
+
 .side-nav {
   opacity: 0.95;
 	position: absolute;
@@ -109,6 +109,7 @@ body{
 	border-bottom: 1px solid #3c506a;
 	position: relative;
 }
+/* white line beside home, may remove */
 .side-nav ul li.active:before {
 	content: '';
 	position: absolute;
@@ -119,7 +120,7 @@ body{
 	background-color: #fff;
 }
 .side-nav ul li a {
-	color: #fff;
+	color: #233245;
 	display: block;
 	text-decoration: none;
 }
@@ -133,14 +134,14 @@ body{
 	font-size: 14px;
 	font-weight: 600;
 }
-/* main content styles */
+
 .main-content {
 	padding: 40px;
 	margin-top: 0;
 	padding: 0;
 	padding-top: 44px;
 	height: 100%;
-	overflow: scroll;
+
 }
 .main-content .title {
   opacity: 0.95;
@@ -229,6 +230,7 @@ body{
 	border-radius: 6px;
 	background-color: #ffffff;
 	position: relative;
+
 }
 .widget .title {
 	background-color: #233245;
