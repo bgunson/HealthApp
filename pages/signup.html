@@ -1,75 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Health App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
-  </head>
-  <body>
-    <div class="modal-dialog text-center">
-      <div class="col main-section">
-        <div class="modal-content">
-            <form class="form-container">
-              <h2>Sign Up</h2>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail">Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="johndoe@example.com">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword">Password</label>
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Choose Password">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-8">
-                  <label for="inputAddress">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="inputProvince">Province</label>
-                  <select id="inputProvince" class="form-control">
-                    <option selected>...</option>
-                    <option>AB</option>
-                    <option>BC</option>
-                    <option>MB</option>
-                    <option>ON</option>
-                    <option>NB</option>
-                    <option>PE</option>
-                    <option>NF</option>
-                    <option>NS</option>
-                    <option>QC</option>
-                    <option>SK</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="inputPostalCode">Postal Code</label>
-                  <input type="text" class="form-control" id="inputZip">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="userType">Sign up as:</label>
-                  <select class="form-control" id="userType">
-                    <option selected>...</option>
-                    <option value="patient">Patient</option>
-                    <option value="staff">Staff</option>
-                    <option value="admin">Admin</option>
-                  </select>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-              <a href="../index.html">Already a user? Sign in</a>
-            </form>
-          </div>
-      </div>
-    </div>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>Health App</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+	</head>
+	<body>
+		<div class="modal-dialog text-center">
+			<div class="col main-section">
+				<div class="modal-content">
+					<form class="col-12">
+						<h2>Sign Up</h2>
+						<div class="form-group">
+							<input type="email" class="form-control" id="inputEmail" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="inputPassword2" placeholder="Confirm Password">
+						</div>
+						Sign Up As:
+						<div class="form-group">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="userType" id="patient" value="patient">
+								<label class="form-check-label" for="patient">Patient</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="userType" id="staff" value="staff">
+								<label class="form-check-label" for="staff">Staff</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="userType" id="admin" value="admin">
+								<label class="form-check-label" for="admin">Admin </label>
+							</div>
+						</div>
+						    <a class="btn btn-primary btn-block" href="dashboard.html">Register</a>
+						    <a href="../index.html">Already a user? Sign in</a>
+						</form>
+					</div>
+			</div>
+		</div>
+	</body>
 </html>
