@@ -87,7 +87,6 @@ body{
 .nav-trigger span:after {
 	top: 6px;
 }
-
 .side-nav {
   opacity: 0.95;
 	position: absolute;
@@ -138,14 +137,12 @@ body{
 	font-size: 14px;
 	font-weight: 600;
 }
-
 .main-content {
 	padding: 40px;
 	margin-top: 0;
 	padding: 0;
 	padding-top: 44px;
 	height: 100%;
-
 }
 .main-content .title {
   opacity: 0.95;
@@ -234,7 +231,6 @@ body{
 	border-radius: 6px;
 	background-color: #ffffff;
 	position: relative;
-
 }
 .widget .title {
 	background-color: #233245;
