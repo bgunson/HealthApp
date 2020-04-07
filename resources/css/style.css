@@ -87,11 +87,6 @@ body{
 .nav-trigger span:after {
 	top: 6px;
 }
-<<<<<<< HEAD
-/* side navigation styles */
-=======
-
->>>>>>> 2c70361cbaf7f3c68c776d25aac7de0595c3a44d
 .side-nav {
   opacity: 0.95;
 	position: absolute;
@@ -113,10 +108,7 @@ body{
 	border-bottom: 1px solid #3c506a;
 	position: relative;
 }
-<<<<<<< HEAD
-=======
 /* white line beside home, may remove */
->>>>>>> 2c70361cbaf7f3c68c776d25aac7de0595c3a44d
 .side-nav ul li.active:before {
 	content: '';
 	position: absolute;
@@ -127,12 +119,6 @@ body{
 	background-color: #fff;
 }
 .side-nav ul li a {
-<<<<<<< HEAD
-	color: #fff;
-	display: block;
-	text-decoration: none;
-}
-=======
 	color: #233245;
 	display: block;
 	text-decoration: none;
@@ -141,7 +127,6 @@ body{
 .side-nav ul li a:hover {
   color: #fff;
 }
->>>>>>> 2c70361cbaf7f3c68c776d25aac7de0595c3a44d
 .side-nav ul li i {
 	color: #0497df;
 	min-width: 20px;
@@ -152,32 +137,18 @@ body{
 	font-size: 14px;
 	font-weight: 600;
 }
-<<<<<<< HEAD
-/* main content styles */
-=======
-
->>>>>>> 2c70361cbaf7f3c68c776d25aac7de0595c3a44d
 .main-content {
 	padding: 40px;
 	margin-top: 0;
 	padding: 0;
 	padding-top: 44px;
 	height: 100%;
-<<<<<<< HEAD
-	overflow: scroll;
-=======
-
->>>>>>> 2c70361cbaf7f3c68c776d25aac7de0595c3a44d
 }
 .main-content .title {
   opacity: 0.95;
 	background-color: #eef1f7;
 	border-bottom: 1px solid #b8bec9;
-<<<<<<< HEAD
-	padding: 10px 20px;
-=======
 	padding: 15px 20px;
->>>>>>> 2c70361cbaf7f3c68c776d25aac7de0595c3a44d
 	font-weight: 700;
 	color: #333;
 	font-size: 18px;
@@ -260,10 +231,6 @@ body{
 	border-radius: 6px;
 	background-color: #ffffff;
 	position: relative;
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c70361cbaf7f3c68c776d25aac7de0595c3a44d
 }
 .widget .title {
 	background-color: #233245;
