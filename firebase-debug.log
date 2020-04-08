@@ -1,0 +1,28 @@
+[debug] [2020-04-08T23:16:12.505Z] ----------------------------------------------------------------------
+[debug] [2020-04-08T23:16:12.506Z] Command:       /usr/local/bin/firebase /Users/thomasnewton/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init
+[debug] [2020-04-08T23:16:12.507Z] CLI Version:   7.15.1
+[debug] [2020-04-08T23:16:12.507Z] Platform:      darwin
+[debug] [2020-04-08T23:16:12.507Z] Node Version:  v12.13.1
+[debug] [2020-04-08T23:16:12.508Z] Time:          Wed Apr 08 2020 17:16:12 GMT-0600 (Mountain Daylight Time)
+[debug] [2020-04-08T23:16:12.508Z] ----------------------------------------------------------------------
+[debug] [2020-04-08T23:16:12.508Z] 
+[debug] [2020-04-08T23:16:12.512Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-08T23:16:12.512Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/thomasnewton/Documents/University/OneDrive - University of Calgary/Winter2020/SENG300/HealthApp
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
