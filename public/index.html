@@ -22,17 +22,17 @@
             <div class="form-group">
               <input type="password" class="form-control" id="input-Password" placeholder="Password">
             </div>
-            <button type="submit" disabled class="btn btn-primary btn-block" id="login-button">
+            <button type="submit" disabled class="btn btn-primary btn-block" id="login-button" action="#">
               Log In
             </button>
           </div>
-          <button id="google-signin" class="btn btn-primary btn-block">
+          <button id="google-signin" class="btn btn-primary btn-block" action='#'>
             <i class="material-icons"></i>Sign-in with Google
           </button>
           Login as:
           <div class="form-group">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="userType" id="patient" value="patient">
+              <input class="form-check-input" type="radio" name="userType" id="patient" value="patient" checked>
               <label class="form-check-label" for="patient">Patient</label>
             </div>
             <div class="form-check form-check-inline">
@@ -44,8 +44,8 @@
               <label class="form-check-label" for="admin">Admin </label>
             </div>
           </div>
-          <a href="pages/signup.html">Sign Up</a>
         </form>
+        <a href="pages/signup.html">Sign Up</a>
       </div>
     </div>
   </div>

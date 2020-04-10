@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        // window.location.href = "account.html";
+        window.location.href = "account.html";
     } else {
         signupForm_span.reset();
     }
