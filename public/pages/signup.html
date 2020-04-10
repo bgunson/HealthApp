@@ -13,7 +13,7 @@
   <div class="modal-dialog text-center">
     <div class="col main-section">
       <div class="modal-content">
-        <form class="col-12">
+        <form class="col-12" id="signup-form">
           <h2>Sign Up</h2>
           <div class="form-group">
             <input type="email" class="form-control" id="inputEmail" placeholder="Email">
@@ -24,6 +24,7 @@
           <div class="form-group">
             <input type="password" class="form-control" id="inputPassword2" placeholder="Confirm Password">
           </div>
+
           Sign Up As:
           <div class="form-group">
             <div class="form-check form-check-inline">
@@ -39,9 +40,9 @@
               <label class="form-check-label" for="admin">Admin </label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="dashboard.html">Register</a>
-          <a href="../index.html">Already a user? Sign in</a>
+          <button class="btn btn-primary btn-block" id="register-btn">Register</button>
         </form>
+        <a href="../index.html">Already a user? Sign in</a>
       </div>
     </div>
   </div>
@@ -52,6 +53,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+
+  <script src="/__/firebase/7.13.1/firebase-app.js"></script>
+  <script src="/__/firebase/7.13.1/firebase-auth.js"></script>
+  <script src="/__/firebase/7.13.1/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+
+  <script src="../scripts/signup.js" charset="utf-8"></script>
 </body>
 
 </html>
