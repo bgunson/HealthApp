@@ -15,11 +15,14 @@ function checkForm() {
 }
 
 function registerUser() {
-    var userType_val = document.querySelector( 
+    let userType_span = document.querySelector( 
         'input[name="userType"]:checked'); 
+    let jsonGroups = {};
+    jsonGroups[userType_span.value] = true
+    
     firebase.firestore().collection("users").doc(inputEmail_span.value).set({
         password: inputPassword1_span.value,
-        userType :  userType_val.value
+        groups : jsonGroups
     }).catch(function (error) {
         console.error('Error writing new message to database', error);
     });
