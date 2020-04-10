@@ -23,6 +23,7 @@ function checkForm() {
     }
 
     if (!newRegistration()){
+        alert("That username or email is already registered.");
         return false;
     }
 
