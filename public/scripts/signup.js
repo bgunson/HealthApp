@@ -7,11 +7,30 @@ function onRegisterFormSubmit(e) {
     if (checkForm()) {
         registerUser();
         // window.location.href = "account.html";
+    } else {
+        signupForm_span.reset();
     }
 }
 
 function checkForm() {
+    if (!formFilled()) {
+        return false;
+    }
+
+    if (inputPassword1_span.value != inputPassword2_span.value) { 
+        alert("The passwords do not match.");
+        return false;
+    }
+
+    if (!newRegistration()){
+        return false;
+    }
+
     return true;
+}
+
+function newRegistration() {
+    return true
 }
 
 function registerUser() {
@@ -19,7 +38,7 @@ function registerUser() {
         'input[name="userType"]:checked'); 
     let jsonGroups = {};
     jsonGroups[userType_span.value] = true
-    
+
     firebase.firestore().collection("users").doc(inputEmail_span.value).set({
         password: inputPassword1_span.value,
         groups : jsonGroups
@@ -28,7 +47,17 @@ function registerUser() {
     });
 }
 
+function toggleButton() {
+    if (formFilled()) {
+        registerBtn_span.removeAttribute('disabled');
+    } else {
+        registerBtn_span.setAttribute('disabled', true);
+    }
+}
 
+function formFilled() {
+    return inputEmail_span.value && inputPassword1_span.value && inputPassword2_span.value;
+}
 
 
 function checkSetup() {
@@ -50,3 +79,9 @@ const registerBtn_span = document.getElementById('register-btn');
 signupForm_span.addEventListener('submit', onRegisterFormSubmit);
 
 
+inputEmail_span.addEventListener('keyup', toggleButton);
+inputEmail_span.addEventListener('change', toggleButton);
+inputPassword1_span.addEventListener('keyup', toggleButton);
+inputPassword1_span.addEventListener('change', toggleButton);
+inputPassword2_span.addEventListener('keyup', toggleButton);
+inputPassword2_span.addEventListener('change', toggleButton);
