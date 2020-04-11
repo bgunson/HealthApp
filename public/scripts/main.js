@@ -1,13 +1,21 @@
 'use strict'
 
 function onMessageFormSubmit() {
-    console.log('Log in pushed');
     if(inputEmail_span && inputPassword_span) {
-        console.log("Email:" + inputEmail_span.value);
-        console.log("Password:" + inputPassword_span.value);
-
         let docRef = db.collection("users").doc(inputEmail_span.value);
-        console.log(docRef);
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                if (doc.data()['password'] == inputPassword_span.value) {
+                    window.location.href = "account.html";
+                 } else {
+                    alert("Incorrect username/password.")
+                 }
+            } else {
+                alert("No such user.")
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
     }
 }
 
@@ -15,9 +23,9 @@ function onMessageFormSubmit() {
 
 function toggleButton() {
     if (inputEmail_span.value && inputPassword_span.value) {
-        submitButtonElement.removeAttribute('disabled');
+        submitButton_span.removeAttribute('disabled');
     } else {
-        submitButtonElement.setAttribute('disabled', 'true');
+        submitButton_span.setAttribute('disabled', 'true');
     }
 }
 
@@ -38,13 +46,12 @@ const inputForm_span = document.getElementById("login-form");
 const inputEmail_span = document.getElementById("input-Email");
 const inputPassword_span = document.getElementById("input-Password");
 const loginButton_span = document.getElementById("login-button");
-const submitButtonElement = document.getElementById('login-button');
-const googleLogin_Span = document.getElementById('google-signin');
+const submitButton_span = document.getElementById('login-button');
+const googleLogin_span = document.getElementById('google-signin');
 
 console.log(inputForm_span);
 
-
-// inputForm_span.addEventListener('submit', onMessageFormSubmit);
+submitButton_span.addEventListener('click', onMessageFormSubmit);
 
 inputEmail_span.addEventListener('keyup', toggleButton);
 inputEmail_span.addEventListener('change', toggleButton);

@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <title>Health Pump: Log In</title>
   <meta charset="utf-8">
+  <title>Health Pump: Log In</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="resources/css/style.css" type="text/css">
@@ -12,23 +12,17 @@
 <body>
   <div class="modal-dialog text-center">
     <div class="col-sm-8 main-section">
-      <div class="modal-content ">
-        <form class="col-12">
+      <div class="modal-content">
+        <div class="col-12" id="login-form">
           <h2>Login</h2>
-          <div id="login-form">
+          <div>
             <div class="form-group">
               <input type="email" class="form-control" id="input-Email" placeholder="Email/Username">
             </div>
             <div class="form-group">
               <input type="password" class="form-control" id="input-Password" placeholder="Password">
             </div>
-            <button type="submit" disabled class="btn btn-primary btn-block" id="login-button" action="#">
-              Log In
-            </button>
           </div>
-          <button id="google-signin" class="btn btn-primary btn-block" action='#'>
-            <i class="material-icons"></i>Sign-in with Google
-          </button>
           Login as:
           <div class="form-group">
             <div class="form-check form-check-inline">
@@ -44,17 +38,15 @@
               <label class="form-check-label" for="admin">Admin </label>
             </div>
           </div>
-        </form>
+          <button class="btn btn-primary btn-block" disabled id="login-button">Log In</button>
+          <!-- <button id="google-signin" class="btn btn-primary btn-block" action='#'>
+            <i class="material-icons"></i>Sign-in with Google
+          </button> -->
+        </div>
         <a href="pages/signup.html">Sign Up</a>
       </div>
     </div>
   </div>
-
-  <!-- Firebase Scripts -->
-  <script src="/__/firebase/7.13.1/firebase-app.js"></script>
-  <script src="/__/firebase/7.13.1/firebase-auth.js"></script>
-  <script src="/__/firebase/7.13.1/firebase-firestore.js"></script>
-  <script src="/__/firebase/init.js"></script>
 
   <!-- Bootstrap Scripts -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -63,6 +55,12 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+
+  <!-- Firebase Scripts -->
+  <script src="/__/firebase/7.13.1/firebase-app.js"></script>
+  <script src="/__/firebase/7.13.1/firebase-auth.js"></script>
+  <script src="/__/firebase/7.13.1/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
 
   <!-- Our scripts -->
   <script src="scripts/main.js" charset="utf-8"></script>
