@@ -31,8 +31,17 @@ function checkForm() {
 }
 
 function newRegistration() {
-
-    return true
+    let docRef = db.collection("users").doc(inputEmail_span.value);
+    
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            return false;
+        } else {
+            return true;
+        }
+    }).catch(function(error) { 
+        console.log("Error checking database for users:", error);
+    });
 }
 
 function registerUser() {

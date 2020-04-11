@@ -13,11 +13,11 @@
   <div class="modal-dialog text-center">
     <div class="col-sm-8 main-section">
       <div class="modal-content">
-        <div class="col-12" id="login-form" action="">
+        <form class="col-12" id="login-form" action="">
           <h2>Login</h2>
           <div>
             <div class="form-group">
-              <input type="email" class="form-control" id="input-Email" placeholder="Email/Username">
+              <input type="email" class="form-control" id="input-Email" placeholder="Email/Username" autocomplete="email">
             </div>
             <div class="form-group">
               <input type="password" class="form-control" id="input-Password" placeholder="Password" autocomplete="false">
@@ -38,11 +38,11 @@
               <label class="form-check-label" for="admin">Admin </label>
             </div>
           </div>
-          <button class="btn btn-primary btn-block" disabled id="login-button">Log In</button>
+          <input class="btn btn-primary btn-block" disabled type="button" value="Log In" id="login-button"></input>
           <!-- <button id="google-signin" class="btn btn-primary btn-block" action='#'>
             <i class="material-icons"></i>Sign-in with Google
           </button> -->
-        </div>
+        </form>
         <a href="pages/signup.html">Sign Up</a>
       </div>
     </div>
