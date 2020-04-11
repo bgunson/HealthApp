@@ -9,9 +9,11 @@ function onMessageFormSubmit() {
                     window.location.href = "pages/dashboard.html";
                  } else {
                     alert("Incorrect username/password.")
+                    // TODO: Clear feilds and other stuff
                  }
             } else {
                 alert("No such user.")
+                // TODO: Clear feilds and other stuff
             }
         }).catch(function(error) {
             console.log("Error getting document:", error);
