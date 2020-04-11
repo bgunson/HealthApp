@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        window.location.href = "account.html";
+        window.location.href = "dashboard.html";
     } else {
         signupForm_span.reset();
     }
@@ -44,7 +44,14 @@ function registerUser() {
         password: inputPassword1_span.value,
         groups : jsonGroups
     }).catch(function (error) {
-        console.error('Error writing new message to database', error);
+        console.error('Error writing new user to users database', error);
+    });
+
+
+    let jsonUserName = {};
+    jsonUserName[inputEmail_span.value] = true;
+    firebase.firestore().collection("groups").doc(userType_span.value).set(jsonUserName);.catch(function (error) {
+        console.error('Error writing new user to groups database', error);
     });
 }
 

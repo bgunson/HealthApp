@@ -6,7 +6,7 @@ function onMessageFormSubmit() {
         docRef.get().then(function(doc) {
             if (doc.exists) {
                 if (doc.data()['password'] == inputPassword_span.value) {
-                    window.location.href = "pages/account.html";
+                    window.location.href = "pages/dashboard.html";
                  } else {
                     alert("Incorrect username/password.")
                  }
