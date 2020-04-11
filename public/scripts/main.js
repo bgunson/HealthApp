@@ -6,7 +6,7 @@ function onMessageFormSubmit() {
         docRef.get().then(function(doc) {
             if (doc.exists) {
                 if (doc.data()['password'] == inputPassword_span.value) {
-                    window.location.href = "account.html";
+                    window.location.href = "pages/account.html";
                  } else {
                     alert("Incorrect username/password.")
                  }
@@ -18,8 +18,6 @@ function onMessageFormSubmit() {
         });
     }
 }
-
-
 
 function toggleButton() {
     if (inputEmail_span.value && inputPassword_span.value) {
@@ -49,13 +47,9 @@ const loginButton_span = document.getElementById("login-button");
 const submitButton_span = document.getElementById('login-button');
 const googleLogin_span = document.getElementById('google-signin');
 
-console.log(inputForm_span);
-
 submitButton_span.addEventListener('click', onMessageFormSubmit);
 
 inputEmail_span.addEventListener('keyup', toggleButton);
 inputEmail_span.addEventListener('change', toggleButton);
 inputPassword_span.addEventListener('keyup', toggleButton);
 inputPassword_span.addEventListener('change', toggleButton);
-
-console.log('End of script.');
