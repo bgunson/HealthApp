@@ -31,6 +31,7 @@ function checkForm() {
 }
 
 function newRegistration() {
+
     return true
 }
 
@@ -40,7 +41,7 @@ function registerUser() {
     let jsonGroups = {};
     jsonGroups[userType_span.value] = true
 
-    firebase.firestore().collection("users").doc(inputEmail_span.value).set({
+    db.collection("users").doc(inputEmail_span.value).set({
         password: inputPassword1_span.value,
         groups : jsonGroups
     }).catch(function (error) {
@@ -50,7 +51,7 @@ function registerUser() {
 
     let jsonUserName = {};
     jsonUserName[inputEmail_span.value] = true;
-    firebase.firestore().collection("groups").doc(userType_span.value).set(jsonUserName);.catch(function (error) {
+    db.collection("groups").doc(userType_span.value).set(jsonUserName).catch(function (error) {
         console.error('Error writing new user to groups database', error);
     });
 }
@@ -77,6 +78,9 @@ function checkSetup() {
 }
 
 checkSetup();
+
+let db = firebase.firestore();
+
 
 const signupForm_span = document.getElementById('signup-form');
 const inputEmail_span = document.getElementById('inputEmail');
