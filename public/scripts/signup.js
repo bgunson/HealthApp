@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        // window.location.href = "dashboard.html";
+        window.location.href = "dashboard.html";
     } else {
         signupForm_span.reset();
     }
@@ -47,7 +47,6 @@ function newRegistration() {
 
 function registerUser() {
     let userType_span = document.querySelector('input[name="userType"]:checked');
-    console.log(userType_span.value);
     db.collection(userType_span.value).doc(inputEmail_span.value).set({
         password: inputPassword1_span.value
     }).catch(function (error) {
