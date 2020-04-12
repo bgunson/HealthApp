@@ -47,7 +47,7 @@ function newRegistration() {
 
 function registerUser() {
     let userType_span = document.querySelector('input[name="userType"]:checked');
-    db.collection(userType_span.value).doc(inputEmail_span.value).set({
+    db.collection(String(userType_span.value)).doc(inputEmail_span.value).set({
         password: inputPassword1_span.value
     }).catch(function (error) {
         console.error('Error writing new user to users database', error);
