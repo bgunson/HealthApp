@@ -3,7 +3,6 @@
 function onMessageFormSubmit() {
     if (inputEmail_span && inputPassword_span) {
         let userType_span = document.querySelector('input[name="userType"]:checked');
-        console.log(userType_span.value);
         
         let docRef = db.collection(userType_span.value).doc(inputEmail_span.value);
 
