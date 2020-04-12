@@ -1,25 +1,28 @@
 'use strict'
 
 function onMessageFormSubmit() {
-    if(inputEmail_span && inputPassword_span) {
+    if (inputEmail_span && inputPassword_span) {
         let userType_span = document.querySelector('input[name="userType"]:checked');
-        let docRef = db.collection(userType_span.value).doc(inputEmail_span.value);
+        console.log(userType_span.value);
         
-        docRef.get().then(function(doc) {
-            if (doc.exists) {
-                if (doc.data()['password'] == inputPassword_span.value) {
-                    window.location.href = "pages/dashboard.html";
-                 } else {
-                    alert("Incorrect username/password.")
-                    // TODO: Clear feilds and other stuff
-                 }
-            } else {
-                alert("No such user.")
-                // TODO: Clear feilds and other stuff
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
+        // let docRef = db.collection(userType_span.value).doc(inputEmail_span.value);
+
+        // docRef.get().then(function (doc) {
+
+        //     if (doc.exists) {
+        //         if (doc.data()['password'] == inputPassword_span.value) {
+        //             window.location.href = "pages/dashboard.html";
+        //         } else {
+        //             alert("Incorrect username/password.")
+        //             // TODO: Clear feilds and other stuff
+        //         }
+        //     } else {
+        //         alert("No such user.")
+        //         // TODO: Clear feilds and other stuff
+        //     }
+        // }).catch(function (error) {
+        //     console.log("Error getting document:", error);
+        // });
     }
 }
 
