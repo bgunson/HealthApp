@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        window.location.href = "dashboard.html";
+        // window.location.href = "dashboard.html";
     } else {
         signupForm_span.reset();
     }
@@ -17,12 +17,12 @@ function checkForm() {
         return false;
     }
 
-    if (inputPassword1_span.value != inputPassword2_span.value) { 
+    if (inputPassword1_span.value != inputPassword2_span.value) {
         alert("The passwords do not match.");
         return false;
     }
 
-    if (!newRegistration()){
+    if (!true) {
         alert("That username or email is already registered.");
         return false;
     }
@@ -31,37 +31,27 @@ function checkForm() {
 }
 
 function newRegistration() {
-    let docRef = db.collection("users").doc(inputEmail_span.value);
-    
-    docRef.get().then(function(doc) {
+    let userType_span = document.querySelector('input[name="userType"]:checked');
+    let docRef = db.collection(userType_span.value).doc(inputEmail_span.value);
+
+    docRef.get().then(function (doc) {
         if (doc.exists) {
             return false;
         } else {
             return true;
         }
-    }).catch(function(error) { 
+    }).catch(function (error) {
         console.log("Error checking database for users:", error);
     });
 }
 
 function registerUser() {
-    let userType_span = document.querySelector( 
-        'input[name="userType"]:checked'); 
-    let jsonGroups = {};
-    jsonGroups[userType_span.value] = true
-
-    db.collection("users").doc(inputEmail_span.value).set({
-        password: inputPassword1_span.value,
-        groups : jsonGroups
+    let userType_span = document.querySelector('input[name="userType"]:checked');
+    console.log(userType_span.value);
+    db.collection(userType_span.value).doc(inputEmail_span.value).set({
+        password: inputPassword1_span.value
     }).catch(function (error) {
         console.error('Error writing new user to users database', error);
-    });
-
-
-    let jsonUserName = {};
-    jsonUserName[inputEmail_span.value] = true;
-    db.collection("groups").doc(userType_span.value).set(jsonUserName).catch(function (error) {
-        console.error('Error writing new user to groups database', error);
     });
 }
 
