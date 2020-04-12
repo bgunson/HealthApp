@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        window.location.href = "dashboard.html";
+        // window.location.href = "dashboard.html";
     } else {
         signupForm_span.reset();
     }
@@ -22,7 +22,7 @@ function checkForm() {
         return false;
     }
 
-    if (!true) {
+    if (!newRegistration()) {
         alert("That username or email is already registered.");
         return false;
     }
