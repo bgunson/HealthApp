@@ -31,7 +31,7 @@
           <a href="appt.html">
 
             <span><i class="fa fa-clipboard"></i></span>
-            <span>Appoinments</span>
+            <span>Appointments</span>
           </a>
         </li>
         <li>
@@ -56,18 +56,33 @@
       </ul>
     </nav>
   </div>
-  <! Add page content below>
+  <!-- Add page content below -->
     <div class="main-content">
-      <div class="title">Appoinments</div>
+      <div class="title">Appointments</div>
+      <form id="add-appointment-form">
+        <input type="text", name="doctor", placeholder="Physician">
+        <input type="text", name="date", placeholder="Date">
+        <input type="text", name="time", placeholder="Time">
+        <button>Request Appointment</button>
+        <ul id="appointment-list"></ul>
+      </form>
+
 
     </div>
-
+    <!-- Bootstrap Scripts-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
       crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"></script>
+    <!-- Firebase Scripts -->
+    <script src="/__/firebase/7.13.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.13.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.13.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <!-- Our Scripts -->
+    <script src="../scripts/appointment.js" charset="utf-8"></script>
 </body>
 
 </html>
