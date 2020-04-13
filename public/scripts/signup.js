@@ -22,7 +22,7 @@ function checkForm() {
         return false;
     }
 
-    if (!newRegistration()) {
+    if (!true) {
         alert("That username or email is already registered.");
         return false;
     }
@@ -34,24 +34,35 @@ function newRegistration() {
     let userType_span = document.querySelector('input[name="userType"]:checked');
     let docRef = db.collection(String(userType_span.value)).doc(inputEmail_span.value);
 
+    let newDoc;
     docRef.get().then(function (doc) {
         if (doc.exists) {
-            return false;
+            console.log("doc already exists");
+            newDoc = false;
         } else {
-            return true;
+            console.log("New doc");
+            newDoc = true;
         }
     }).catch(function (error) {
         console.log("Error checking database for users:", error);
     });
+    console.log("hello");
+
 }
 
 function registerUser() {
     let userType_span = document.querySelector('input[name="userType"]:checked');
-    db.collection(String(userType_span.value)).doc(inputEmail_span.value).set({
-        password: inputPassword1_span.value
-    }).catch(function (error) {
-        console.error('Error writing new user to users database', error);
+
+    firebase.auth().createUserWithEmailAndPassword(inputEmail_span.value, inputPassword1_span.value).catch(function(error) {
+        let errorCoed = error.code;
+        let erroeMessage = error.message;
     });
+
+    // db.collection(String(userType_span.value)).doc(inputEmail_span.value).set({
+    //     password: inputPassword1_span.value
+    // }).catch(function (error) {
+    //     console.error('Error writing new user to users database', error);
+    // });
 }
 
 function toggleButton() {
@@ -78,6 +89,15 @@ function checkSetup() {
 checkSetup();
 
 let db = firebase.firestore();
+// let ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+// ui.start('#firebaseui-auth-container', {
+//     signInOptions: [
+//         firebase.auth.EmailAuthProvider.PROVIDER_ID
+//     ],
+//     // Other config options...
+// });
+
 
 
 const signupForm_span = document.getElementById('signup-form');
