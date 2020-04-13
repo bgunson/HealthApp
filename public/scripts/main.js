@@ -44,7 +44,8 @@ function getUiConfig() {
 
 function handleSignedInUser(user) {
     console.log("user signed in.");
-    window.location.assign("pages/account.html");
+    // window.location.assign("pages/account.html");
+    firebase.auth().signOut();
     console.log(firebase.auth().currentUser);
 }
 

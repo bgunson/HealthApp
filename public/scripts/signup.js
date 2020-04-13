@@ -31,38 +31,41 @@ function checkForm() {
 }
 
 function newRegistration() {
-    let userType_span = document.querySelector('input[name="userType"]:checked');
-    let docRef = db.collection(String(userType_span.value)).doc(inputEmail_span.value);
-
-    let newDoc;
-    docRef.get().then(function (doc) {
-        if (doc.exists) {
-            console.log("doc already exists");
-            newDoc = false;
-        } else {
-            console.log("New doc");
-            newDoc = true;
-        }
-    }).catch(function (error) {
-        console.log("Error checking database for users:", error);
-    });
-    console.log("hello");
 
 }
 
 function registerUser() {
     let userType_span = document.querySelector('input[name="userType"]:checked');
 
-    firebase.auth().createUserWithEmailAndPassword(inputEmail_span.value, inputPassword1_span.value).catch(function(error) {
-        let errorCoed = error.code;
-        let erroeMessage = error.message;
-    });
+    firebase.auth().createUserWithEmailAndPassword(inputEmail_span.value, inputPassword1_span.value).then(function (s) {
+        let user = firebase.auth().currentUser;
+        console.log(user);
 
-    // db.collection(String(userType_span.value)).doc(inputEmail_span.value).set({
-    //     password: inputPassword1_span.value
-    // }).catch(function (error) {
-    //     console.error('Error writing new user to users database', error);
-    // });
+        db.collection(String(userType_span.value)).doc(user.uid).set({
+            userID: user.uid,
+            name : "",
+            email : ""
+        }).then(function () {
+            // If we need to do something after writting user into database
+        }).catch(function (Error) {
+            firebase.auth().currentUser.delete();
+            console.error("Error writting user data: ", error);
+        });
+
+        // Delete user for testing purposes
+        firebase.auth().currentUser.delete();
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+        } else {
+            alert(errorMessage);
+        }
+        console.log(error);
+    });
 }
 
 function toggleButton() {
@@ -89,16 +92,6 @@ function checkSetup() {
 checkSetup();
 
 let db = firebase.firestore();
-// let ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-// ui.start('#firebaseui-auth-container', {
-//     signInOptions: [
-//         firebase.auth.EmailAuthProvider.PROVIDER_ID
-//     ],
-//     // Other config options...
-// });
-
-
 
 const signupForm_span = document.getElementById('signup-form');
 const inputEmail_span = document.getElementById('inputEmail');
