@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        // window.location.href = "dashboard.html";
+        window.location.href = "dashboard.html";
     } else {
         signupForm_span.reset();
     }
@@ -37,7 +37,18 @@ function registerUser() {
     firebase.auth().createUserWithEmailAndPassword(inputEmail_span.value, inputPassword1_span.value).then(function (s) {
         let user = firebase.auth().currentUser;
 
-        db.collection(String(userType_span.value)).doc(user.uid).set(getUserData(user, userType_span)).then(function () {
+        db.collection('users').doc(user.uid).set(getUserData(user, userType_span)).then(function () {
+            // If we need to do something after writting user into database
+        }).catch(function (Error) {
+            // If a database error occurs delete user
+            firebase.auth().currentUser.delete();
+            console.error("Error writting user data: ", error);
+        });
+
+
+        let jsonUserGroups = {};
+        jsonUserGroups[user.uid] = true;
+        db.collection('groups').doc(String(userType_span.value)).update(jsonUserGroups).then(function () {
             // If we need to do something after writting user into database
         }).catch(function (Error) {
             // If a database error occurs delete user
@@ -63,10 +74,14 @@ function registerUser() {
  * @param {HTMLRadioElement} userType_span 
  */
 function getUserData(user, userType_span) {
+    let jsonGroups = {};
+    jsonGroups[userType_span.value] = true;
+
     return {
         userID: user.uid,
         name: "",
-        email: user.email
+        email: user.email,
+        groups : jsonGroups
     };
 }
 
