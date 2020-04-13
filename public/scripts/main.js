@@ -6,7 +6,6 @@ function handleSignedInUser(user) {
     console.log(firebase.auth().currentUser);
     window.location.assign("pages/dashboard.html");
     // firebase.auth().signOut();
-    console.log(document.getElementsByTagName("script"));
 }
 
 function handleSignedOutUser() {
