@@ -8,17 +8,26 @@ function displayApp(doc){
     let doctor = document.createElement('span');
     let date = document.createElement('span');
     let time = document.createElement('span');
+    let cancel = document.createElement('div');
 
     li.setAttribute('data-id', doc.id);
     doctor.textContent = doc.data().doctor;
     date.textContent = doc.data().date;
     time.textContent = doc.data().time;
+    cancel.textContent = 'Cancel';
     
     li.appendChild(doctor);
     li.appendChild(date);
     li.appendChild(time);
+    li.appendChild(cancel);
 
     applist.appendChild(li);
+    
+    cancel.addEventListener('click', (evt) => {
+        evt.stopPropagation();
+        let id = evt.target.parentElement.getAttribute('data-id');
+        db.collection('appointments').doc(id).delete();
+    });
 }
 
 //getting data
