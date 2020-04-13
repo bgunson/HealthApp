@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        // window.location.href = "dashboard.html";
+        window.location.href = "dashboard.html";
     } else {
         signupForm_span.reset();
     }
@@ -21,37 +21,68 @@ function checkForm() {
         alert("The passwords do not match.");
         return false;
     }
-
-    if (!newRegistration()) {
-        alert("That username or email is already registered.");
-        return false;
-    }
-
     return true;
 }
 
-function newRegistration() {
-    let userType_span = document.querySelector('input[name="userType"]:checked');
-    let docRef = db.collection(String(userType_span.value)).doc(inputEmail_span.value);
+function formFilled() {
+    return inputEmail_span.value && inputPassword1_span.value && inputPassword2_span.value;
+}
 
-    docRef.get().then(function (doc) {
-        if (doc.exists) {
-            return false;
-        } else {
-            return true;
-        }
+/**
+ * Register user and add their data to database
+ */
+function registerUser() {
+    let userType_span = document.querySelector('input[name="userType"]:checked');
+
+    firebase.auth().createUserWithEmailAndPassword(inputEmail_span.value, inputPassword1_span.value).then(function (s) {
+        let user = firebase.auth().currentUser;
+
+        db.collection('users').doc(user.uid).set(getUserData(user, userType_span)).then(function () {
+            // If we need to do something after writting user into database
+        }).catch(function (Error) {
+            // If a database error occurs delete user
+            firebase.auth().currentUser.delete();
+            console.error("Error writting user data: ", error);
+        });
+
+
+        let jsonUserGroups = {};
+        jsonUserGroups[user.uid] = true;
+        db.collection('groups').doc(String(userType_span.value)).update(jsonUserGroups).then(function () {
+            // If we need to do something after writting user into database
+        }).catch(function (Error) {
+            // If a database error occurs delete user
+            firebase.auth().currentUser.delete();
+            console.error("Error writting user data: ", error);
+        });
     }).catch(function (error) {
-        console.log("Error checking database for users:", error);
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+        } else {
+            alert(errorMessage);
+        }
+        console.log(error);
     });
 }
 
-function registerUser() {
-    let userType_span = document.querySelector('input[name="userType"]:checked');
-    db.collection(String(userType_span.value)).doc(inputEmail_span.value).set({
-        password: inputPassword1_span.value
-    }).catch(function (error) {
-        console.error('Error writing new user to users database', error);
-    });
+/**
+ * Create JSON element representing the new users data
+ * @param {firebase.user} user 
+ * @param {HTMLRadioElement} userType_span 
+ */
+function getUserData(user, userType_span) {
+    let jsonGroups = {};
+    jsonGroups[userType_span.value] = true;
+
+    return {
+        userID: user.uid,
+        name: "",
+        email: user.email,
+        groups : jsonGroups
+    };
 }
 
 function toggleButton() {
@@ -60,10 +91,6 @@ function toggleButton() {
     } else {
         registerBtn_span.setAttribute('disabled', true);
     }
-}
-
-function formFilled() {
-    return inputEmail_span.value && inputPassword1_span.value && inputPassword2_span.value;
 }
 
 
@@ -78,7 +105,6 @@ function checkSetup() {
 checkSetup();
 
 let db = firebase.firestore();
-
 
 const signupForm_span = document.getElementById('signup-form');
 const inputEmail_span = document.getElementById('inputEmail');
