@@ -69,10 +69,9 @@
             <h4>Request</h4>
             <form id="add-appointment-form">
               <input type="text", name="doctor", placeholder="Physician" required>
-              <label for="date">Date</label>
-              <input type="date", name="date" required>
-              <label for="time">Time</label>
-              <input type="time", name="time" required>
+              <label for="datetime">Date Time</label>
+              <input type="datetime-local" @bind="@closedPlatform.Start" 
+              @bind:format="yyyy-MM-ddTHH:mm" step="1", name="datetime", required>
               <button class="btn btn-primary">Request Appointment</button>
               <hr>
               <h4>Upcoming Appointments</h4>

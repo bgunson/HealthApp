@@ -6,23 +6,20 @@ const db = firebase.firestore();
 function displayApp(user, doc) {
     let li = document.createElement('li');
     let doctor = document.createElement('span');
-    let date = document.createElement('span');
-    let time = document.createElement('span');
+    let datetime = document.createElement('span');
     let cancel = document.createElement('div');
     cancel.setAttribute('class', 'btn btn-secondary');
 
     li.setAttribute('data-id', doc.id);
     console.log("aptdoc2: ", doc.data());
     doctor.textContent = doc.data().doctor;
-    date.textContent = doc.data().date;
-    time.textContent = doc.data().time;
+    datetime.textContent = doc.data().datetime;
     cancel.textContent = 'Cancel Appointment'
 
     li.appendChild(doctor);
     li.append("; ");
-    li.appendChild(date);
+    li.appendChild(datetime);
     li.append("; ");
-    li.appendChild(time);
     li.appendChild(cancel);
 
     applist.appendChild(li);
@@ -60,8 +57,7 @@ function onSubmitAppointment(user, evt) {
     
     db.collection('appointments').add({
         doctor: form.doctor.value,
-        date: form.date.value,
-        time: form.time.value,
+        datetime: form.datetime.value,
         patient: user.uid
     }).then(ref => {
         let docGet = db.collection('users').doc(String(user.uid)).get().then(doc => {
@@ -77,8 +73,7 @@ function onSubmitAppointment(user, evt) {
     });
 
     form.doctor.value = '';
-    form.date.value = '';
-    form.time.value = '';
+    form.datetime.value = '';
 }
 
 
