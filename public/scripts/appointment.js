@@ -47,26 +47,34 @@ function onSubmitAppointment(evt) {
     form.time.value = '';
 }
 
-//getting data
-// db.collection('appointments').get().then((snapshot) => {
-//     console.log(snapshot.docs);
-//     snapshot.docs.forEach(doc => {
-//         console.log(doc.data());
-//         displayApp(doc);
-//     })
-// });
 
-//saving data
+function handleSignedInUser(user) {
+    console.log("user: ", firebase.auth().currentUser);
+    form.addEventListener('submit', function (evt) {onSubmitAppointment(evt)});
+}
+
+function handleSignedOutUser(){
+    window.location.assign("../index.html");
+}
 
 
-firebase.auth().signInWithEmailAndPassword(firebase.auth().currentUser.email, '123456').then(function () {
-    // What ever we need to do after login in user
-}).catch(function (error) {
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    console.log("Error: ", error);
+function initPage() {
+
+}
+
+// Checks that the Firebase SDK has been correctly setup and configured.
+function checkSetup() {
+    if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
+        window.alert('You have not configured and imported the Firebase SDK. ' +
+            'Make sure you go through the codelab setup instructions and make ' +
+            'sure you are running the codelab using `firebase serve`');
+    }
+}
+checkSetup();
+
+firebase.auth().onAuthStateChanged(function(user) {
+    user ? handleSignedInUser(user) : handleSignedOutUser();
 });
 
-console.log(firebase.auth().currentUser);
 
-form.addEventListener('submit', function (evt) {onSubmitAppointment(evt)});
+window.addEventListener('load', initPage);
