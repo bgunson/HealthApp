@@ -84,7 +84,7 @@ function getUserData(user, userType_span) {
 
     return {
         userID: user.uid,
-        name: "",
+        name: inputName_span.value,
         email: user.email,
         groups: jsonGroups
     };
@@ -116,6 +116,7 @@ const inputEmail_span = document.getElementById('inputEmail');
 const inputPassword1_span = document.getElementById('inputPassword1');
 const inputPassword2_span = document.getElementById('inputPassword2');
 const registerBtn_span = document.getElementById('register-btn');
+const inputName_span = document.getElementById('inputeName');
 
 signupForm_span.addEventListener('submit', onRegisterFormSubmit);
 

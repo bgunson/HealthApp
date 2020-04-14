@@ -2,7 +2,7 @@
 
 
 function handleSignedInUser(user) {
-
+    console.log(user);
 }
 
 function handleSignedOutUser() {
@@ -25,7 +25,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 function initPage() {
-    console.log(firebase.auth().currentUser);
     signOutButton_span.addEventListener('click', function() {firebase.auth().signOut()});
 }
 

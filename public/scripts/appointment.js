@@ -60,8 +60,7 @@ function onSubmitAppointment(user, evt) {
     
     db.collection('appointments').add({
         doctor: form.doctor.value,
-        date: form.date.value,
-        time: form.time.value,
+        dateTime: firebase.firestore.Timestamp.fromDate(new Date(form.date.value+form.time.value)),
         patient: user.uid
     }).then(ref => {
         let docGet = db.collection('users').doc(String(user.uid)).get().then(doc => {
