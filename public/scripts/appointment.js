@@ -9,6 +9,7 @@ function displayApp(user, doc) {
     let date = document.createElement('span');
     let time = document.createElement('span');
     let cancel = document.createElement('div');
+    cancel.setAttribute('class', 'btn btn-secondary');
 
     li.setAttribute('data-id', doc.id);
     console.log("aptdoc2: ", doc.data());
@@ -18,7 +19,9 @@ function displayApp(user, doc) {
     cancel.textContent = 'Cancel Appointment'
 
     li.appendChild(doctor);
+    li.append("; ");
     li.appendChild(date);
+    li.append("; ");
     li.appendChild(time);
     li.appendChild(cancel);
 

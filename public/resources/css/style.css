@@ -264,3 +264,7 @@ body{
 	border-left: 6px solid;
 	color: #233245;
 }
+hr {
+	color: #233245;
+	border-top: 4px solid;
+}
