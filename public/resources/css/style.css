@@ -241,3 +241,11 @@ body{
 	color: #fff;
 	font-weight: 600;
 }
+.main-content .container {
+	background-color: #ffffff;
+	padding: 30px 30px;
+	border-radius: 6px;
+	opacity: 0.95;
+	position: relative;
+	height: 450px;
+}
