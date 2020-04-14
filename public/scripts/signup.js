@@ -6,7 +6,7 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        window.location.href = "dashboard.html";
+        window.location.assign("dashboard.html");
     } else {
         signupForm_span.reset();
     }

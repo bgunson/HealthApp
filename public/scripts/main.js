@@ -3,8 +3,12 @@
 
 function handleSignedInUser(user) {
     console.log("user signed in.");
-    console.log(firebase.auth().currentUser);
-    window.location.assign("pages/dashboard.html");
+    console.log("User: ", firebase.auth().currentUser);
+    console.log("Window location: ", window.location.href);
+
+    // if (window.location.href == "http://localhost:5000/") {
+    window.location = "/pages/dashboard.html";
+    // }
     // firebase.auth().signOut();
 }
 
@@ -38,11 +42,6 @@ function toggleButton() {
 
 
 function initApp() {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function() {
-
-    }).catch(function(Error) {
-
-    });
     firebase.auth().onAuthStateChanged(function (user) {
         // Some loading screen
         user ? handleSignedInUser(user) : handleSignedOutUser();
@@ -55,6 +54,12 @@ function initApp() {
     inputPassword_span.addEventListener('keyup', toggleButton);
     inputPassword_span.addEventListener('change', toggleButton);
 }
+
+
+// const container_span = document.getElementById("contatiner");
+
+// $("#container").load("/pages/signupForm_span.html");
+
 
 // Checks that the Firebase SDK has been correctly setup and configured.
 function checkSetup() {
