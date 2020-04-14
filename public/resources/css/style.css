@@ -231,6 +231,7 @@ body{
 	border-radius: 6px;
 	background-color: #ffffff;
 	position: relative;
+	flex-grow: 1;
 }
 .widget .title {
 	background-color: #233245;
@@ -242,10 +243,24 @@ body{
 	font-weight: 600;
 }
 .main-content .container {
+	width: auto;
+	margin: 15px;
 	background-color: #ffffff;
-	padding: 30px 30px;
+	opacity: 0.9;
 	border-radius: 6px;
-	opacity: 0.95;
-	position: relative;
-	height: 450px;
+	padding: 10px 10px;
+	flex-basis: 300px;
+	flex-grow: 10;
+}
+
+.container .title {
+	background-color: #233245;
+	border-radius: 6px;
+	color: #fff;
+	font-weight: 600;
+}
+
+.vl {
+	border-left: 6px solid;
+	color: #233245;
 }
