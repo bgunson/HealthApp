@@ -6,7 +6,6 @@ function onRegisterFormSubmit(e) {
 
     if (checkForm()) {
         registerUser();
-        window.location.assign("dashboard.html");
     } else {
         signupForm_span.reset();
     }
@@ -47,17 +46,15 @@ function registerUser() {
         // console.log(getUserData(user, userType_span));
 
         db.collection('users').doc(user.uid).set(getUserData(user, userType_span)).then(function () {
-            // If we need to do something after writting user into database
-        }).catch(function (Error) {
-            // If a database error occurs delete user
-            firebase.auth().currentUser.delete();
-            console.error("Error writting user data: ", error);
-        });
-
-        let jsonUserGroups = {};
-        jsonUserGroups[user.uid] = true;
-        db.collection('groups').doc(String(userType_span.value)).update(jsonUserGroups).then(function () {
-            // If we need to do something after writting user into database
+            let jsonUserGroups = {};
+            jsonUserGroups[user.uid] = true;
+            db.collection('groups').doc(String(userType_span.value)).update(jsonUserGroups).then(function () {
+                window.location.href = "dashboard.html";
+            }).catch(function (Error) {
+                // If a database error occurs delete user
+                firebase.auth().currentUser.delete();
+                console.error("Error writting user data: ", error);
+            });
         }).catch(function (Error) {
             // If a database error occurs delete user
             firebase.auth().currentUser.delete();
@@ -89,7 +86,7 @@ function getUserData(user, userType_span) {
         userID: user.uid,
         name: "",
         email: user.email,
-        groups : jsonGroups
+        groups: jsonGroups
     };
 }
 
