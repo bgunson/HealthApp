@@ -2,9 +2,9 @@
 
 
 function handleSignedInUser(user) {
-    console.log("user signed in.");
-    console.log("User: ", firebase.auth().currentUser);
-    console.log("Window location: ", window.location.href);
+    // console.log("user signed in.");
+    // console.log("User: ", firebase.auth().currentUser);
+    // console.log("Window location: ", window.location.href);
 
     window.location = "/pages/dashboard.html";
 }
