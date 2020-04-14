@@ -65,15 +65,16 @@
   <!-- Add page content below -->
     <div class="main-content">
       <div class="title">Appointments</div>
-      <form id="add-appointment-form">
-        <input type="text", name="doctor", placeholder="Physician">
-        <input type="text", name="date", placeholder="Date">
-        <input type="text", name="time", placeholder="Time">
-        <button>Request Appointment</button>
-        <ul id="appointment-list"></ul>
-      </form>
-
-
+      <div class="container">
+            <h4>Request</h4>
+            <form id="add-appointment-form">
+              <input type="text", name="doctor", placeholder="Physician">
+              <input type="text", name="date", placeholder="Date">
+              <input type="text", name="time", placeholder="Time">
+              <button class="btn btn-primary">Request Appointment</button>
+              <ul id="appointment-list"></ul>
+            </form>
+      </div>
     </div>
 
     <!-- Bootstrap Scripts-->
