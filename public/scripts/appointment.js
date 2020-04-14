@@ -36,7 +36,7 @@ function onSubmitAppointment(evt) {
         let docGet = db.collection('users').doc(String(user.uid)).get().then(doc => {
             let apptsArr = doc.data()['appointments'] ? doc.data()['appointments'] : [];
             console.log(apptsArr);
-            apptsArr.push(ref.id);
+            apptsArr.unshift(ref.id);
             db.collection('users').doc(String(user.uid)).update({ appointments: apptsArr });
         }).catch(err => {
             console.log("Error: ", err);
@@ -60,11 +60,13 @@ function handleSignedInUser(user) {
         console.log("User Apts: ", usrApts);
 
         usrApts.forEach(function (apt, idx) {
-            db.collection('appointments').doc(apt).get().then(apt => {
-                displayApp(apt);
-            }).catch(err => {
-                console.log("Error: ", err);
-            });
+            if (idx < 12) {
+                db.collection('appointments').doc(apt).get().then(apt => {
+                    displayApp(apt);
+                }).catch(err => {
+                    console.log("Error: ", err);
+                });
+            }
         });
     });
 }
