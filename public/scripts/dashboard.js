@@ -26,7 +26,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function initPage() {
     signOutButton_span.addEventListener('click', function() {firebase.auth().signOut()});
-    console.log(firebase.auth().currentUser);
+
+    setTimeout(function(){console.log(firebase.auth().currentUser)}, 2000);
 }
 
 
