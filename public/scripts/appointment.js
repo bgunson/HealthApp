@@ -17,9 +17,8 @@ function displayApp(user, doc) {
     cancel.textContent = 'Cancel Appointment'
 
     li.appendChild(doctor);
-    li.append("; ");
+    li.append('\t');
     li.appendChild(datetime);
-    li.append("; ");
     li.appendChild(cancel);
 
     applist.appendChild(li);
