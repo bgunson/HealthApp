@@ -1,4 +1,4 @@
-const applist = document.querySelector('#appointment-list');
+const applist = document.getElementById('appointment-list');
 const form = document.querySelector('#add-appointment-form');
 const db = firebase.firestore();
 
@@ -19,7 +19,7 @@ function displayApp(doc) {
     li.appendChild(doctor);
     li.appendChild(date);
     li.appendChild(time);
-    li.appendChild(cancel).
+    li.appendChild(cancel);
 
     applist.appendChild(li);
 
@@ -106,8 +106,5 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 window.addEventListener('load', initPage);
-<<<<<<< HEAD
-=======
 
 const signOutButton_span = document.getElementById('sign-out-button');
->>>>>>> 1b831d1666bd5a8b8d26bc38c50646b3703d91b1
