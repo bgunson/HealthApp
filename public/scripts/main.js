@@ -6,10 +6,7 @@ function handleSignedInUser(user) {
     console.log("User: ", firebase.auth().currentUser);
     console.log("Window location: ", window.location.href);
 
-    // if (window.location.href == "http://localhost:5000/") {
-    window.location = "/pages/dashboard.html";
-    // }
-    // firebase.auth().signOut();
+    // window.location = "/pages/dashboard.html";
 }
 
 function handleSignedOutUser() {
@@ -18,12 +15,18 @@ function handleSignedOutUser() {
 
 function onMessageFormSubmit() {
     if (checkMessageForm()) {
+        console.log("email: ", inputEmail_span.value);
+        console.log("psw: ", inputPassword_span.value);
         firebase.auth().signInWithEmailAndPassword(inputEmail_span.value, inputPassword_span.value).then(function () {
             // What ever we need to do after login in user
         }).catch(function (error) {
             let errorCode = error.code;
             let errorMessage = error.message;
-            console.log("Error: ", error);
+            if (errorCode == "auth/user-not-found") {
+                alert("No such user found");
+            } else {
+                console.log("Error: ", error);
+            }
         });
     }
 }
@@ -47,6 +50,7 @@ function initApp() {
         user ? handleSignedInUser(user) : handleSignedOutUser();
     });
 
+
     submitButton_span.addEventListener('click', onMessageFormSubmit);
 
     inputEmail_span.addEventListener('keyup', toggleButton);
@@ -54,12 +58,6 @@ function initApp() {
     inputPassword_span.addEventListener('keyup', toggleButton);
     inputPassword_span.addEventListener('change', toggleButton);
 }
-
-
-// const container_span = document.getElementById("contatiner");
-
-// $("#container").load("/pages/signupForm_span.html");
-
 
 // Checks that the Firebase SDK has been correctly setup and configured.
 function checkSetup() {

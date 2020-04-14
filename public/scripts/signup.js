@@ -34,8 +34,17 @@ function formFilled() {
 function registerUser() {
     let userType_span = document.querySelector('input[name="userType"]:checked');
 
-    firebase.auth().createUserWithEmailAndPassword(inputEmail_span.value, inputPassword1_span.value).then(function (s) {
+    // console.log("email: ", inputEmail_span.value);
+    // console.log("psw1: ", inputPassword1_span.value);
+    // console.log("psw2: ", inputPassword2_span.value);
+    // console.log("usr: ", userType_span.value);
+
+
+
+    firebase.auth().createUserWithEmailAndPassword(inputEmail_span.value, inputPassword1_span.value).then(function () {
         let user = firebase.auth().currentUser;
+
+        // console.log(getUserData(user, userType_span));
 
         db.collection('users').doc(user.uid).set(getUserData(user, userType_span)).then(function () {
             // If we need to do something after writting user into database
@@ -44,7 +53,6 @@ function registerUser() {
             firebase.auth().currentUser.delete();
             console.error("Error writting user data: ", error);
         });
-
 
         let jsonUserGroups = {};
         jsonUserGroups[user.uid] = true;
