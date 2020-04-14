@@ -223,7 +223,7 @@ body{
 	flex-flow: row wrap;
 }
 .widget {
-  opacity: 0.95;
+    opacity: 0.95;
 	flex-basis: 300px;
 	flex-grow: 10;
 	height: 300px;
@@ -240,4 +240,13 @@ body{
 	border-top-right-radius: 6px;
 	color: #fff;
 	font-weight: 600;
+}
+
+.main-content .container {
+	background-color: #ffffff;
+	padding: 30px 30px;
+	border-radius: 6px;
+	opacity: 0.95;
+	position: relative;
+	height: 450px;
 }
