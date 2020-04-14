@@ -8,17 +8,27 @@ function displayApp(doc) {
     let doctor = document.createElement('span');
     let date = document.createElement('span');
     let time = document.createElement('span');
+    let cancel = document.createElement('div');
 
     li.setAttribute('data-id', doc.id);
     doctor.textContent = doc.data().doctor;
     date.textContent = doc.data().date;
     time.textContent = doc.data().time;
+    cancel.textContent = 'Cancel Appointment'
 
     li.appendChild(doctor);
     li.appendChild(date);
     li.appendChild(time);
+    li.appendChild(cancel).
 
     applist.appendChild(li);
+
+    //Cancel appointments via user input
+    cancel.addEventListener('click', (evt) => {
+        evt.stopPropagation();
+        let id = evt.target.parentElement.getAttribute('data-id');
+        db.collection('appointments').doc(id).delete();
+    });
 }
 
 
@@ -77,7 +87,7 @@ function handleSignedOutUser() {
 
 
 function initPage() {
-
+    signOutButton_span.addEventListener('click', function() {firebase.auth().signOut()});
 }
 
 // Checks that the Firebase SDK has been correctly setup and configured.
@@ -96,3 +106,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 window.addEventListener('load', initPage);
+<<<<<<< HEAD
+=======
+
+const signOutButton_span = document.getElementById('sign-out-button');
+>>>>>>> 1b831d1666bd5a8b8d26bc38c50646b3703d91b1
