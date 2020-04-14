@@ -63,11 +63,15 @@ function onSubmitAppointment(evt) {
 
 function handleSignedInUser(user) {
     console.log("user: ", firebase.auth().currentUser);
+
     form.addEventListener('submit', function (evt) { onSubmitAppointment(evt) });
+
     db.collection('users').doc(String(user.uid)).onSnapshot(doc => {
         console.log("UsrDoc: ", doc);
         let usrApts = doc.data()['appointments'];
         console.log("User Apts: ", usrApts);
+    
+        applist.innerHTML = '';
 
         usrApts.forEach(function (apt, idx) {
             if (idx < 12) {
