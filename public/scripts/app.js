@@ -6,7 +6,7 @@ function handleSignedInUser(user) {
     console.log("User: ", firebase.auth().currentUser);
     console.log("Window location: ", window.location.href);
 
-    // window.location = "/pages/dashboard.html";
+    window.location = "/pages/dashboard.html";
 }
 
 function handleSignedOutUser() {
