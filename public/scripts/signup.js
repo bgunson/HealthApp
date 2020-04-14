@@ -116,7 +116,7 @@ const inputEmail_span = document.getElementById('inputEmail');
 const inputPassword1_span = document.getElementById('inputPassword1');
 const inputPassword2_span = document.getElementById('inputPassword2');
 const registerBtn_span = document.getElementById('register-btn');
-const inputName_span = document.getElementById('inputeName');
+const inputName_span = document.getElementById('inputName');
 
 signupForm_span.addEventListener('submit', onRegisterFormSubmit);
 
