@@ -69,6 +69,7 @@ function registerUser() {
         } else {
             alert(errorMessage);
         }
+        firebase.auth().currentUser.delete();
         console.log(error);
     });
 }
