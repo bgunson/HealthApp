@@ -106,8 +106,5 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 window.addEventListener('load', initPage);
-<<<<<<< HEAD
-=======
 
 const signOutButton_span = document.getElementById('sign-out-button');
->>>>>>> 1b831d1666bd5a8b8d26bc38c50646b3703d91b1
