@@ -77,7 +77,7 @@ function handleSignedOutUser() {
 
 
 function initPage() {
-
+    signOutButton_span.addEventListener('click', function() {firebase.auth().signOut()});
 }
 
 // Checks that the Firebase SDK has been correctly setup and configured.
@@ -96,3 +96,5 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 window.addEventListener('load', initPage);
+
+const signOutButton_span = document.getElementById('sign-out-button');
