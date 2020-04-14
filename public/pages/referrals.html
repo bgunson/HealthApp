@@ -64,6 +64,40 @@
   </div>
   <div class="main-content">
     <div class="title">Referrals</div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="container">
+          <h3>Request Referral</h3>
+          <form id="referral-form">
+            <div class="form-group">
+              <label for="referral-type">Appointment Type:</label>
+              <select class="form-control" id="referral-type">
+                <option>Diagnosis</option>
+                <option>Management</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="urgency">Urgency</label>
+              <select class="form-control" id="urgency">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="referralReason">Reason for Refferal:</label>
+              <textarea class="form-control" id="refferalReason" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary" id="referral-submit">Submit Request</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm">
+          <div class="container">
+            <h3>Active Referrals</h3>
+          </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
