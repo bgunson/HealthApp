@@ -68,10 +68,14 @@
       <div class="container">
             <h4>Request</h4>
             <form id="add-appointment-form">
-              <input type="text", name="doctor", placeholder="Physician">
-              <input type="text", name="date", placeholder="Date">
-              <input type="text", name="time", placeholder="Time">
+              <input type="text", name="doctor", placeholder="Physician" required>
+              <label for="date">Day</label>
+              <input type="date", name="date", placeholder="Date" required>
+              <label for="time">Time</label>
+              <input type="time", name="time", placeholder="Time" required>
               <button class="btn btn-primary">Request Appointment</button>
+              <hr>
+              <h4>Upcoming Appointments</h4>
               <ul id="appointment-list"></ul>
             </form>
       </div>
