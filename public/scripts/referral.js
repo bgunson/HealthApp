@@ -16,8 +16,9 @@ function displayApp(user, doc) {
 
     li.setAttribute('data-id', doc.id); 
     console.log("aptdoc2: ", doc.data());
-    doctor.textContent = doc.data().doctor;
-    datetime.textContent = doc.data().datetime;
+    apptype.textContent = doc.data().type;
+    urgency.textContent = doc.data().urgency;
+    reason.textContent = doc.data().reason;
     cancel.textContent = 'Cancel Request'
 
     li.appendChild(apptype);
