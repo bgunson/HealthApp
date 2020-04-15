@@ -1,7 +1,8 @@
 'use strict'
 
-const reflist = document.getElementById('referral-list');
-const form = document.querySelector('#add-referral-form');
+const reflist = document.getElementById('refferal-list');
+const form = document.getElementById('add-referral-form');
+
 const db = firebase.firestore();
 
 //create element and display appointments
@@ -62,7 +63,7 @@ function onSubmitReferral(user, evt) {
     db.collection('referrals').add({
         type: form.apptype.value,
         urgency: form.urgency.value,
-        reason: form.reason.value,
+        reason: form.refferalReason.value,
         user: user.uid
     }).then(ref => {
         let docGet = db.collection('users').doc(String(user.uid)).get().then(doc => {
@@ -77,11 +78,11 @@ function onSubmitReferral(user, evt) {
         console.log("Error: ", err);
     });
 
-    form.reason.value = '';
+    form.refferalReason.value = '';
 }
 
 function handleSignedInUser(user) {
-    console.log("user: ", firebase.auth().currentUser);
+    console.log("user: ", user.uid);
     form.addEventListener('submit', function (evt) { onSubmitReferral(user, evt) });
 
     db.collection('users').doc(String(user.uid)).onSnapshot(function (doc) {
