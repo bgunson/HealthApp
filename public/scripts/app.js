@@ -5,8 +5,11 @@ function handleSignedInUser(user) {
     // console.log("user signed in.");
     // console.log("User: ", firebase.auth().currentUser);
     // console.log("Window location: ", window.location.href);
-
-    window.location = "/pages/dashboard.html";
+    if(document.getElementById('admin').checked == true) {
+        window.location = "/pages/admin.html";
+    } else {
+        window.location = "/pages/dashboard.html";
+    }
 }
 
 function handleSignedOutUser() {
