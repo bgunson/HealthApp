@@ -21,12 +21,12 @@ function displayApp(user, doc) {
     reason.textContent = doc.data().reason;
     cancel.textContent = 'Cancel Request'
 
+    li.append("Type: ")
     li.appendChild(apptype);
-    li.append("; ");
+    li.append(" Urgency: ");
     li.appendChild(urgency);
-    li.append("; ");
+    li.append("Reason for Request: ");
     li.appendChild(reason);
-    li.append(";");
     li.appendChild(cancel);
 
     reflist.appendChild(li);
