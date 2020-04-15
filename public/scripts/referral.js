@@ -1,7 +1,7 @@
 'use strict'
 
 const reflist = document.getElementById('refferal-list');
-const form = document.querySelector('#add-refferal-form');
+const form = document.getElementById('add-referral-form');
 const db = firebase.firestore();
 
 //create element and display appointments
@@ -33,12 +33,12 @@ function displayApp(user, doc) {
     cancel.addEventListener('click', (evt) => {
         evt.stopPropagation();
         let aptID = evt.target.parentElement.getAttribute('data-id');
-        db.collection('refferals').doc(aptID).delete();
+        db.collection('referrals').doc(aptID).delete();
 
-        db.collection('refferals').doc(aptID).delete().then(ref => {
+        db.collection('referrals').doc(aptID).delete().then(ref => {
             console.log("User new: ", user);
             let docGet = db.collection('users').doc(String(user.uid)).get().then(doc => {
-                let apptsArr = doc.data()['refferals'];
+                let apptsArr = doc.data()['referrals'];
                 console.log(apptsArr);
                 if (apptsArr) {
                     let indx = apptsArr.indexOf(aptID);
@@ -56,17 +56,17 @@ function displayApp(user, doc) {
     });
 }
 
-function onSubmitRefferal(user, evt) {
+function onSubmitReferral(user, evt) {
     evt.preventDefault();
     
-    db.collection('refferals').add({
+    db.collection('referrals').add({
         type: form.apptype.value,
         urgency: form.urgency.value,
-        reason: form.reason.value,
+        reason: form.refferalReason.value,
         user: user.uid
     }).then(ref => {
         let docGet = db.collection('users').doc(String(user.uid)).get().then(doc => {
-            let apptsArr = doc.data()['refferals'] ? doc.data()['refferals'] : [];
+            let apptsArr = doc.data()['referrals'] ? doc.data()['referrals'] : [];
             console.log(apptsArr);
             apptsArr.unshift(ref.id);
             db.collection('users').doc(String(user.uid)).update({ refferals: apptsArr });
@@ -77,23 +77,23 @@ function onSubmitRefferal(user, evt) {
         console.log("Error: ", err);
     });
 
-    form.reason.value = '';
+    form.refferalReason.value = '';
 }
 
 function handleSignedInUser(user) {
-    console.log("user: ", firebase.auth().currentUser);
-    form.addEventListener('submit', function (evt) { onSubmitAppointment(user, evt) });
+    console.log("user: ", user.uid);
+    form.addEventListener('submit', function (evt) { onSubmitReferral(user, evt) });
 
     db.collection('users').doc(String(user.uid)).onSnapshot(function (doc) {
         console.log("UsrDoc: ", doc);
-        let usrApts = doc.data()['refferals'];
+        let usrApts = doc.data()['referrals'];
         console.log("User Apts: ", usrApts);
 
         reflist.innerHTML = '';
         if (usrApts) {
             usrApts.forEach(function (apt, idx) {
                 if (idx < 12) {
-                    db.collection('refferals').doc(apt).get().then(apt => {
+                    db.collection('referrals').doc(apt).get().then(apt => {
                         console.log("aptDoc: ", apt);
                         displayApp(user, apt);
                     }).catch(err => {
