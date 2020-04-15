@@ -5,6 +5,7 @@ function handleSignedInUser(user) {
     // console.log("user signed in.");
     // console.log("User: ", firebase.auth().currentUser);
     // console.log("Window location: ", window.location.href);
+    // go to dashboard
     if(document.getElementById('admin').checked == true) {
         window.location = "/pages/admin.html";
     } else {
@@ -18,10 +19,9 @@ function handleSignedOutUser() {
 
 function onMessageFormSubmit() {
     if (checkMessageForm()) {
-        console.log("email: ", inputEmail_span.value);
-        console.log("psw: ", inputPassword_span.value);
+        // console.log("email: ", inputEmail_span.value);
+        // console.log("psw: ", inputPassword_span.value);
         firebase.auth().signInWithEmailAndPassword(inputEmail_span.value, inputPassword_span.value).then(function () {
-            // What ever we need to do after login in user
         }).catch(function (error) {
             let errorCode = error.code;
             let errorMessage = error.message;
@@ -35,10 +35,12 @@ function onMessageFormSubmit() {
 }
 
 function checkMessageForm() {
+    // is login filled
     return !!(inputEmail_span && inputPassword_span);
 }
 
 function toggleButton() {
+    // Toggle the login button
     if (inputEmail_span.value && inputPassword_span.value) {
         submitButton_span.removeAttribute('disabled');
     } else {
@@ -48,8 +50,8 @@ function toggleButton() {
 
 
 function initApp() {
+    // Handle user login status
     firebase.auth().onAuthStateChanged(function (user) {
-        // Some loading screen
         user ? handleSignedInUser(user) : handleSignedOutUser();
     });
 
