@@ -82,7 +82,7 @@ function onSubmitReferral(user, evt) {
 
 function handleSignedInUser(user) {
     console.log("user: ", firebase.auth().currentUser);
-    form.addEventListener('submit', function (evt) { onSubmitAppointment(user, evt) });
+    form.addEventListener('submit', function (evt) { onSubmitReferral(user, evt) });
 
     db.collection('users').doc(String(user.uid)).onSnapshot(function (doc) {
         console.log("UsrDoc: ", doc);
