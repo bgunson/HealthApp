@@ -2,6 +2,7 @@
 
 const reflist = document.getElementById('refferal-list');
 const form = document.getElementById('add-referral-form');
+
 const db = firebase.firestore();
 
 //create element and display appointments
@@ -44,7 +45,7 @@ function displayApp(user, doc) {
                     let indx = apptsArr.indexOf(aptID);
                     if (indx > -1) {
                         apptsArr.splice(indx, 1);
-                        db.collection('users').doc(String(user.uid)).update({ refferals: apptsArr });
+                        db.collection('users').doc(String(user.uid)).update({ referrals: apptsArr });
                     }
                 }
             }).catch(err => {
@@ -69,7 +70,7 @@ function onSubmitReferral(user, evt) {
             let apptsArr = doc.data()['referrals'] ? doc.data()['referrals'] : [];
             console.log(apptsArr);
             apptsArr.unshift(ref.id);
-            db.collection('users').doc(String(user.uid)).update({ refferals: apptsArr });
+            db.collection('users').doc(String(user.uid)).update({ referrals: apptsArr });
         }).catch(err => {
             console.log("Error: ", err);
         });
