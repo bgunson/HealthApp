@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous" />
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="/public/resources/css/admin.css" />
+  <script src="/public/scripts/admin.js"></script>
+</head>
+
+<body>
+  <h1>Admin Dashboard</h1>
+  <br />
+  <div class="card-list">
+    <!--
+    <button type="button" class="btn btn-success" onclick="showModal()">Add Doctor/Patient</button>
+    <span class="d-inline-block remove-popover" data-toggle="popover" data-content="Disabled popover">
+      <button type="button" class="btn btn-danger" style="pointer-events: none;" disabled>Remove Doctor/Patient</button>
+    </span>-->
+    <div class="card card1" style="width: 18rem;">
+      <img class="card-img" src="/resources/images/doctor-img.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Add a Doctor/Patient</h5>
+        <p class="card-text">Send an invite to a doctor to join the team or to a patient.</p>
+        <a href="#" class="btn btn-success" onclick="showModalAdd()">Add</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img" src="/resources/images/remove-img.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Remove a Doctor/Patient</h5>
+        <p class="card-text">Make changes to your team or client list by removing them from the system.</p>
+        <a href="#" class="btn btn-danger" onclick="showModalRemove()">Remove</a>
+      </div>
+    </div>
+  </div>
+  <div class="modal add-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Doctor/Patient</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Please enter their name and email address, we will send an invite via email.</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Name:</span>
+            </div>
+            <input type="text" placeholder="Full name" class="form-control name-input" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Email:</span>
+            </div>
+            <input type="text" placeholder="name@example.com" class="form-control email-input" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success invite-button" data-toggle="popover" data-content="Please enter a valid name and email."
+            onclick="inviteClicked()">Invite</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal remove-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Remove Doctor/Patient</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Please enter the email address of the doctor/patient you wish to remove.</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Email:</span>
+            </div>
+            <input type="text" placeholder="name@example.com" class="form-control email-input-remove" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger remove-button" data-toggle="popover" data-content="Please enter a valid email."
+            onclick="removeClicked()">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br clear="all">
+  <div class="exit">
+    <button type="button" class="btn btn-link" onclick="window.location.href='/account.html'">Exit admin dashboard</button>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

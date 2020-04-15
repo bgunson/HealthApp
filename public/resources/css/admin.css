@@ -1,0 +1,24 @@
+.card-list {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.card {
+    float: left;
+    height: 450px;
+    margin: 10px;
+}
+
+.card-img {
+    height: 200px;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.exit {
+    padding-top: 20px;
+    text-align: center;
+}
